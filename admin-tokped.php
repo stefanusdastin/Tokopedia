@@ -1,9 +1,14 @@
 <?php
 session_start();
+//ambil koneksi dari koneksi.php
+include "config.php";
+
 //cek apakah ada email
 if (!isset($_SESSION['username'])) {
     header('Location:login-page-tokped.php');
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,26 +43,17 @@ if (!isset($_SESSION['username'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/tokopedia/user-tokped.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="http://localhost/tokopedia/user-tokped.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">For You</a>
+                        <a class="nav-link" href="#">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Explore</a>
+                        <a class="nav-link" href="#">Product</a>
                     </li>
-
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <!-- Section Account -->
                 <ul class="navbar-nav ms-3">
-                    <li class="nav-item me-2 mt-2">
-                        <a class="nav-link" href="#">
-                            <h4 class="bi bi-bag-heart"></h4>
-                        </a>
-                    </li>
                     <li class="nav-item dropdown mt-2">
                         <div class="dropdown">
                             <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="http://localhost/pemrograman-web/pertemuan1/Ecommerce/img/profilepict.png" alt="Stefanus Dastin" width="30" class="rounded-circle" />
@@ -77,48 +73,82 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </li>
                 </ul>
+                <!-- Akhir Section Account -->
             </div>
         </div>
     </nav>
     <!-- Akhir Navbar -->
 
     <!-- Edit Database -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col">Password</th>
-                <th scope="col">Edit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>
-                    <div class="btn btn-success">Edit</div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>Thornton</td>
-                <td>Thornton</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
+    <script lang="PHP">
+        // Perintah untuk menampilkan data
+        $sql = "SELECT * FROM user;"; //menampikan SEMUA data dari tabel siswa
+
+        $res = mysqli_query($conn, "SELECT * FROM user"); //fungsi untuk SQL
+
+        // perintah untuk membaca dan mengambil data dalam bentuk array
+        while ($data = mysqli_fetch_array($res)) {
+            $id = $data['id'];
+
+
+            /*    echo "  
+              
+              Nama : " . $data['nama'] . " </br>
+              Jenis Kelamin : " . $data['Jenis_Kelamin'] . " </br> 
+              Kelas : " . $data['Kelas'] . " </br>
+              Alamat : " . $data['alamat'] . " </br>
+              ---------------------------------------- </br>
+              ";*/
+        }
+    </script>
+    <!-- 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm m-3">
+                <div class="card" style="border-radius: 20px">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>Otto</td>
+                                <td>
+                                    <div class="btn btn-success">Edit</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry the Bird</td>
+                                <td>Thornton</td>
+                                <td>Thornton</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+
     <!-- Akhir Edit Database -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

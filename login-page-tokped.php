@@ -33,38 +33,6 @@ if (isset($_POST['submit'])) {
     }else{
         echo'<script>alert("Username atau Password salah"); window.location="login-page-tokped.php"; </script>';
     }
-
-    /*$sql = "SELECT * FROM user WHERE email='$email' AND password='$password'"; // menuliskan query lalu dimasukan ke var sql
-    $result = mysqli_query($conn, $sql); // menjalan perintah pada var sql dan memasukan hasil ke var result
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $sql = "SELECT level FROM user WHERE email='$email'";
-        $res = mysqli_query($conn, $sql);
-        switch ($res) {
-            case '1':
-                $_SESSION['username'] = $row['username'];
-                header("Location: user-tokped.php");
-                break;
-            case '2':
-                $_SESSION['username'] = $row['username'];
-                header("Location: admin-tokped.php");
-                break;
-
-            default:
-                echo "<script>alert('Level tdk ditemukan')</script>";
-                break;
-        }
-        if ($res = "1") {
-            $_SESSION['username'] = $row['username'];
-            header("Location: admin-tokped.php");
-        }
-        if ($res = "0") {
-            $_SESSION['username'] = $row['username'];
-            header("Location: user-tokped.php");
-        }
-    } else {
-        echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
-    }*/
 }
 
 ?>
@@ -101,7 +69,6 @@ if (isset($_POST['submit'])) {
     <!-- Akhir Navbar -->
 
     <!-- Form -->
-    <!-- pastikan action menuju ke auth.php dan method POST/post -->
     <section id="form">
 
         <div class="row text-center mb-3">

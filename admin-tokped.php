@@ -79,29 +79,7 @@ if (!isset($_SESSION['username'])) {
     </nav>
     <!-- Akhir Navbar -->
 
-    <!-- Edit Database -->
-    <script lang="PHP">
-        // Perintah untuk menampilkan data
-        $sql = "SELECT * FROM user;"; //menampikan SEMUA data dari tabel siswa
-
-        $res = mysqli_query($conn, "SELECT * FROM user"); //fungsi untuk SQL
-
-        // perintah untuk membaca dan mengambil data dalam bentuk array
-        while ($data = mysqli_fetch_array($res)) {
-            $id = $data['id'];
-
-
-            /*    echo "  
-              
-              Nama : " . $data['nama'] . " </br>
-              Jenis Kelamin : " . $data['Jenis_Kelamin'] . " </br> 
-              Kelas : " . $data['Kelas'] . " </br>
-              Alamat : " . $data['alamat'] . " </br>
-              ---------------------------------------- </br>
-              ";*/
-        }
-    </script>
-    <!-- 
+    <!-- Table User -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm m-3">
@@ -118,38 +96,33 @@ if (!isset($_SESSION['username'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Otto</td>
-                                <td>
-                                    <div class="btn btn-success">Edit</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>Thornton</td>
-                                <td>Thornton</td>
-                                <td>@twitter</td>
-                            </tr>
+                            <?php
+                            include 'config.php';
+                            $no = 1;
+                            $data = mysqli_query($conn, "select * from user");
+                            while ($d = mysqli_fetch_array($data)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $no++; ?></td>
+                                    <td><?php echo $d['email']; ?></td>
+                                    <td><?php echo $d['username']; ?></td>
+                                    <td><?php echo $d['password']; ?></td>
+                                    <td><?php echo $d['level']; ?></td>
+                                    <td>
+                                        <a href="edit.php?id=<?php echo $d['email']; ?>">EDIT</a>
+                                        <a href="hapus.php?id=<?php echo $d['email']; ?>">HAPUS</a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    -->
-
-    <!-- Akhir Edit Database -->
+    <!-- Table User -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

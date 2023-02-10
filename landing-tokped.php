@@ -88,12 +88,12 @@
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item me-2 mt-2">
                         <a class="nav-link disabled" href="#">
-                            <h4 class="bi bi-bag-heart"></h4>
+                            <h4 class="bi-bag-heart"></h4>
                         </a>
                     </li>
                     <li class="nav-item me-2 mt-1">
-                        <a class="nav-link" href="login-page-tokped.php">
-                            <button type="button" class="btn btn-outline-success">Login</button>
+                        <a class="nav-link" href="signin-page-tokped.php">
+                            <button type="button" class="btn btn-outline-success">Sign In</button>
                         </a>
                     </li>
                 </ul>

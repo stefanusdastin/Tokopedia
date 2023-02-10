@@ -10,28 +10,27 @@ session_start();
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
+    $user = $_POST['user'];
     $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
 
-    $login = mysqli_query($conn,"SELECT * FROM user WHERE email='$email' and password='$password'");
-// menghitung jumlah data yang ditemukan
-    $cek = mysqli_num_rows($login);
-    if($cek > 0){
- 
-        $data = mysqli_fetch_assoc($login);
-     
-        if($data['level']=="admin"){
-            $_SESSION['username'] = $email;
-            $_SESSION['level'] = "admin";
-            header("location:admin-tokped.php");
-        }else if($data['level']=="pengguna"){
-            $_SESSION['username'] = $email;
-            $_SESSION['level'] = "pengguna";
-            header("location:user-tokped.php");
-        }else{
-            echo'<script>alert("Username atau Password salah"); window.location="login-page-tokped.php"; </script>';
-        }	
-    }else{
-        echo'<script>alert("Username atau Password salah"); window.location="login-page-tokped.php"; </script>';
+    if ($password == $cpassword) {
+        $sql = "SELECT * FROM user WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+        if (!$result->num_rows > 0) {
+            $sqli = "INSERT INTO user (`email`,`username`,`password`) VALUES ('$email','$username','$password';";
+            $res = mysqli_query($conn,$sqli);
+            if ($res) {
+                $_SESSION['username'] = $email;
+                header("location:user-tokped.php");
+            }else {
+                echo "<script>alert('Woops! Terjadi kesalahan.')</script>";
+            }
+        } else {
+            echo "<script>alert('Woops! Email Sudah Terdaftar.')</script>";
+        }
+    } else {
+        echo "<script>alert('Password Tidak Sesuai')</script>";
     }
 }
 
@@ -44,7 +43,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width" initial-scale="1.0" />
-    <title>Login | Tokopedia</title>
+    <title>Sign In | Tokopedia</title>
 
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -73,7 +72,7 @@ if (isset($_POST['submit'])) {
 
         <div class="row text-center mb-3">
             <div class="col mt-5">
-                <h2>Login</h2>
+                <h2>Sign In</h2>
             </div>
         </div>
         <div id="con-form" class="container">
@@ -89,16 +88,33 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="row justify-content-center mb-3">
                     <div class="col-md-8">
+                        <div class="mb-3 mt-3">
+                            <label for="user" class="form-label">Username</label>
+                            <input name="user" type="text" class="form-control" value="<?php echo $user; ?>" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-3">
+                    <div class="col-md-8">
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input name="password" type="password" class="form-control" value="<?php echo $password ?>" required>
-                            <p class="form-text">Don't have account yet?<a href="signin-page-tokped.php">Sign In</a><br><a href="#">Forgot your password?</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-3">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="cpassword" class="form-label">Confirm Password</label>
+                            <input name="cpassword" type="password" class="form-control" value="<?php echo $cpassword ?>" required>
+                            <p class="form-text">Already have an account?<a href="login-page-tokped.php">Log In</a><br><a href="#">Forgot your password?</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-8 mb-3">
-                        <input class="btn btn-outline-success" type="submit" name="submit" value="Login">
+                        <input class="btn btn-outline-success" type="submit" name="submit" value="Sign In">
                     </div>
                 </div>
             </form>

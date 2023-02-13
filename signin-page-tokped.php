@@ -18,12 +18,12 @@ if (isset($_POST['submit'])) {
         $sql = "SELECT * FROM user WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sqli = "INSERT INTO user (`email`,`username`,`password`) VALUES ('$email','$username','$password';";
-            $res = mysqli_query($conn,$sqli);
+            $sqli = "INSERT INTO user (email,username,password) VALUES ('$email','$user','$password')";
+            $res = mysqli_query($conn, $sqli);
             if ($res) {
                 $_SESSION['username'] = $email;
-                header("location:user-tokped.php");
-            }else {
+                header("location:welcome.php");
+            } else {
                 echo "<script>alert('Woops! Terjadi kesalahan.')</script>";
             }
         } else {
@@ -77,25 +77,25 @@ if (isset($_POST['submit'])) {
         </div>
         <div id="con-form" class="container">
             <form action="" method="POST">
-                <div class="row justify-content-center mb-3">
+                <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
-                        <div class="mb-3 mt-3">
+                        <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input name="email" type="email" class="form-control" value="<?php echo $email; ?>" aria-describedby="emailHelp" required>
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-3">
+                <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
-                        <div class="mb-3 mt-3">
+                        <div class="mb-3">
                             <label for="user" class="form-label">Username</label>
                             <input name="user" type="text" class="form-control" value="<?php echo $user; ?>" required>
                         </div>
                     </div>
                 </div>
 
-                <div class="row justify-content-center mb-3">
+                <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-3">
+                <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="cpassword" class="form-label">Confirm Password</label>

@@ -1,9 +1,9 @@
 <?php
-    include 'signin-page-tokped.php-page-tokped.php';
+session_start();
 
-    if (!isset($_SESSION['username'])) {
-        header('Location:login-page-tokped.php');
-    }
+if (!isset($_SESSION['username'])) {
+    header('Location:login-page-tokped.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,27 +12,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Welcome to Tokopedia</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 </head>
 
 <body style="background-color: rgba(2, 192, 94, 255)">
-    <div class="container mt-md-5" style="padding-top: 170px">
+    <div class="container" style="padding-top: 170px">
         <div class="row justify-content-center">
-            <div class="col-md-4 mt-5 me-md-5 text-light text-center">
-                <h5>Welcome, <?php $user?>
-                </h5>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti a nemo ut minus magni assumenda? Voluptate beatae perspiciatis corporis doloribus, nobis id maiores? Deserunt incidunt provident aliquam nihil
-                    inventore fuga magnam, voluptatum in libero culpa vitae aut doloremque dolore labore?
-                </p>
-                <a class="nav-link" href="user-tokped.php">
-                    <button type="button" class="btn btn-light">Let's Get Started</button>
-                </a>
+            <div class="col-md-4 me-md-5 text-light text-center">
+                <h5>
+                    <b>Welcome,</b>
+                    </h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti a nemo ut minus magni assumenda? Voluptate beatae perspiciatis corporis doloribus, nobis id maiores? Deserunt incidunt provident aliquam nihil
+                        inventore fuga magnam, voluptatum in libero culpa vitae aut doloremque dolore labore?
+                    </p>
+                    <a class="nav-link" href="user-tokped.php">
+                        <button type="button" class="btn btn-light">Let's Get Started</button>
+                    </a>
             </div>
-            <div class="col-sm-4 m-4">
+            <div class="col-sm-4 m-4 mt-0">
                 <img src="img/welcome.jpg" class="justify-content-center img-fluid" width="300" height="520" />
             </div>
         </div>

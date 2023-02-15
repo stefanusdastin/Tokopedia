@@ -43,10 +43,10 @@ if (!isset($_SESSION['username'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/tokopedia/admin-tokped.php">Dashboard</a>
+                        <a class="nav-link" href="http://localhost/tokopedia/admin-tokped.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/Tokopedia/admin-tab2-tokped.php">User</a>
+                        <a class="nav-link active" href="http://localhost/Tokopedia/admin-tab2-tokped.php">User</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Product</a>
@@ -79,10 +79,9 @@ if (!isset($_SESSION['username'])) {
     </nav>
     <!-- Akhir Navbar -->
 
-    <!-- Dashboard -->
+    <!-- Edit User -->
     <div class="row justify-content-center">
-        <!-- List User -->
-        <div class="col-5 mt-5">
+        <div class="col-11 mt-5">
             <div class="card shadow-lg" style="border-radius: 20px">
                 <div class="card-body">
                     <h3>List User</h3>
@@ -95,6 +94,7 @@ if (!isset($_SESSION['username'])) {
                             <th scope="col">Username</th>
                             <th scope="col">Password</th>
                             <th scope="col">Level</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -128,108 +128,8 @@ if (!isset($_SESSION['username'])) {
                 </table>
             </div>
         </div>
-        <!-- Akhir List User -->
-        <!-- List Product -->
-        <div class="col-6 mt-5">
-            <div class="card shadow-lg" style="border-radius: 20px">
-                <div class="card-body">
-                    <h3>List Produk</h3>
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Level</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include 'config.php';
-                        $no = 1;
-                        $data = mysqli_query($conn, "select * from user");
-                        while ($d = mysqli_fetch_array($data)) {
-                        ?>
-                            <tr>
-                                <td>
-                                    <?php echo $no++; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['email']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['username']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['password']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['level']; ?>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- Akhir List Product -->
-    </div>
+        <!-- Akhir Edit User -->
 
-    <!-- List Pesanan -->
-
-    <div class="row justify-content-center">
-        <div class="col-11 mt-5">
-            <div class="card shadow-lg" style="border-radius: 20px">
-                <div class="card-body">
-                    <h3>Pesanan</h3>
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Level</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include 'config.php';
-                        $no = 1;
-                        $data = mysqli_query($conn, "select * from user");
-                        while ($d = mysqli_fetch_array($data)) {
-                        ?>
-                            <tr>
-                                <td>
-                                    <?php echo $no++; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['email']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['username']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['password']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['level']; ?>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- Akhir Dashboard -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

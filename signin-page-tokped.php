@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="user" class="form-label">Username</label>
-                            <input name="user" type="text" class="form-control" value="<?php echo $user; ?>" required>
+                            <input name="user " type="text" class="form-control" value="<?php echo $user; ?>" required>
                         </div>
                     </div>
                 </div>

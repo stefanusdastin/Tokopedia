@@ -81,13 +81,13 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Edit User -->
     <div class="row justify-content-center">
-        <div class="col-11 mt-5">
-            <div class="card shadow-lg" style="border-radius: 20px">
+        <div class="col-10 mt-5">
+            <div class="card shadow-lg">
                 <div class="card-body">
                     <h3>List User</h3>
                 </div>
                 <table class="table table-striped">
-                    <thead> 
+                    <thead>
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Email</th>
@@ -120,6 +120,11 @@ if (!isset($_SESSION['username'])) {
                                 <td>
                                     <?php echo $d['level']; ?>
                                 </td>
+                                <td>
+                                    <a href="edit-user.php?id=<? $d['email']?>" class="btn btn-outline-success">EDIT</a>
+                                    <a href="" class="btn btn-outline-danger">HAPUS</a>
+                                </td>
+
                             </tr>
                         <?php
                         }
@@ -129,12 +134,10 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
         <!-- Akhir Edit User -->
-
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

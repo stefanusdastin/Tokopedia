@@ -83,7 +83,7 @@ if (!isset($_SESSION['username'])) {
     <div class="row justify-content-center">
         <!-- List User -->
         <div class="col-5 mt-5">
-            <div class="card shadow-lg" style="border-radius: 20px">
+            <div class="card shadow-lg">
                 <div class="card-body">
                     <h3>List User</h3>
                 </div>
@@ -130,8 +130,8 @@ if (!isset($_SESSION['username'])) {
         </div>
         <!-- Akhir List User -->
         <!-- List Product -->
-        <div class="col-6 mt-5">
-            <div class="card shadow-lg" style="border-radius: 20px">
+        <div class="col-5 mt-5">
+            <div class="card shadow-lg">
                 <div class="card-body">
                     <h3>List Produk</h3>
                 </div>
@@ -182,8 +182,8 @@ if (!isset($_SESSION['username'])) {
     <!-- List Pesanan -->
 
     <div class="row justify-content-center">
-        <div class="col-11 mt-5">
-            <div class="card shadow-lg" style="border-radius: 20px">
+        <div class="col-10 mt-5">
+            <div class="card shadow-lg">
                 <div class="card-body">
                     <h3>Pesanan</h3>
                 </div>

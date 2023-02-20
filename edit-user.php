@@ -2,18 +2,18 @@
 
 include 'config.php';
 
-$email = $_GET['id'];
+$d = $_GET['email'];
 
 
-$result = mysqli_query($conn_db, "SELECT * FROM users WHERE id='" . $id . "'");
+$result = mysqli_query($conn, "SELECT * FROM user WHERE email='" . $d . "'");
 if (!$result) {
     header("Location:edit-user.php");
 }
 
 while ($customer_data = mysqli_fetch_array($result)) {
-    $username = $customer_data['username'];
-    $email = $customer_data['email'];
-    $password = $customer_data['password'];
+    $user = $customer_data['username'];
+    $d = $customer_data['email'];
+    $pass = $customer_data['password'];
     $level = $customer_data['level'];
 }
 ?>
@@ -58,38 +58,38 @@ while ($customer_data = mysqli_fetch_array($result)) {
             </div>
         </div>
         <div id="con-form" class="container">
-        <form action="admin_user_editprocess.php" method="post">
-            <!-- Username input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="form3Example3" class="form-control form-control-md" name="username" value=<?= $username ?> /><label class="form-label" for="username">Username</label>
-            </div>
-
-            <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control form-control-md" name="email" value=<?php echo $email; ?> /><label class="form-label" for="email">Email</label>
-            </div>
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-                <input type="password" id="form3Example4" class="form-control form-control-md" name="password" value=<?php echo $password; ?> /><label class="form-label" for="password">Password</label>
-            </div>
-
-            <div class="form-outline mb-3">
-                <div class="input-group">
-                    <select class="form-control form-control-md" id="inputGroupSelect01" name="level" required>
-                        <option value="admin">admin</option>
-                        <option value="Pengguna">pengguna</option>
-                    </select>
+            <form action="admin_user_editprocess.php" method="post">
+                <!-- Username input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example3" class="form-control form-control-md" name="user" value=<?= $user ?> /><label class="form-label" for="username">Username</label>
                 </div>
-                <label>Tipe Kamar</label>
-            </div>
 
-            <div class="form-outline mb-3">
-                <input type="hidden" name="id" value=<?php echo $_GET['id']; ?>>
-            </div>
+                <div class="form-outline mb-4">
+                    <input type="email" id="form3Example3" class="form-control form-control-md" name="email" value=<?php echo $d; ?> /><label class="form-label" for="email">Email</label>
+                </div>
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                    <input type="password" id="form3Example4" class="form-control form-control-md" name="pass" value=<?php echo $pass; ?> /><label class="form-label" for="password">Password</label>
+                </div>
 
-            <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="update" value="Update">Update</button>
-            </div>
-        </form>
+                <div class="form-outline mb-3">
+                    <div class="input-group">
+                        <select class="form-control form-control-md" id="inputGroupSelect01" name="level" required>
+                            <option value="admin">admin</option>
+                            <option value="Pengguna">pengguna</option>
+                        </select>
+                    </div>
+                    <label>Tipe Kamar</label>
+                </div>
+
+                <div class="form-outline mb-3">
+                    <input type="hidden" name="id" value=<?php echo $_GET['id']; ?>>
+                </div>
+
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="update" value="Update">Update</button>
+                </div>
+            </form>
         </div>
     </section>
     <!-- Akhir Form -->

@@ -22,16 +22,20 @@ while ($customer_data = mysqli_fetch_array($result)) {
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
-    <title>Sign In | Tokopedia</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Tokopedia ADMIN</title>
 </head>
 
 <body>
@@ -39,7 +43,7 @@ while ($customer_data = mysqli_fetch_array($result)) {
     <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="http://localhost/Tokopedia/admin-tab2-tokped.php">
-                <img src="img/logo.svg" alt="" />
+                <img src="img/logo.svg" alt="" /> ADMIN
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,40 +58,42 @@ while ($customer_data = mysqli_fetch_array($result)) {
 
         <div class="row text-center mb-3">
             <div class="col mt-5">
-                <h2>Sign In</h2>
+                <h2>Edit Data User</h2>
             </div>
         </div>
         <div id="con-form" class="container">
-            <form action="admin_user_editprocess.php" method="post">
-                <!-- Username input -->
-                <div class="form-outline mb-4">
-                    <input type="text" id="form3Example3" class="form-control form-control-md" name="user" value=<?= $user ?> /><label class="form-label" for="username">Username</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control form-control-md" name="email" value=<?php echo $d; ?> /><label class="form-label" for="email">Email</label>
-                </div>
-                <!-- Password input -->
-                <div class="form-outline mb-3">
-                    <input type="password" id="form3Example4" class="form-control form-control-md" name="pass" value=<?php echo $pass; ?> /><label class="form-label" for="password">Password</label>
-                </div>
-
-                <div class="form-outline mb-3">
-                    <div class="input-group">
-                        <select class="form-control form-control-md" id="inputGroupSelect01" name="level" required>
-                            <option value="admin">admin</option>
-                            <option value="Pengguna">pengguna</option>
-                        </select>
+            <form action="admin_edituser_process.php" method="POST">
+                <div class="row justify-content-center mb-2">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input id="email" name="email" type="email" class="form-control" value="<?= $d ?>" required>
+                        </div>
                     </div>
-                    <label>Tipe Kamar</label>
                 </div>
-
-                <div class="form-outline mb-3">
-                    <input type="hidden" name="id" value=<?php echo $_GET['id']; ?>>
+                <div class="row justify-content-center mb-2">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="user" class="form-label">Username</label>
+                            <input id="user" name="user " type="text" class="form-control" value="<?= $user; ?>" required>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="update" value="Update">Update</button>
+                <div class="row justify-content-center mb-2">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="level" class="form-label">Level</label>
+                            <select class="form-control form-control-md" id="level" name="level" required >
+                                <option>Pengguna</option>
+                                <option>Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 mb-3">
+                        <input class="btn btn-outline-success" type="submit" name="submit" value="Save Change">
+                    </div>
                 </div>
             </form>
         </div>

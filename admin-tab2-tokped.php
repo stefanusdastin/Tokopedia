@@ -121,7 +121,7 @@ if (!isset($_SESSION['username'])) {
                                     <?php echo $d['level']; ?>
                                 </td>
                                 <td>
-                                    <a href="edit-user.php?id=<? $d['email']?>" class="btn btn-outline-success">EDIT</a>
+                                    <a href="edit-user.php?email=<?= $d['email']?>" class="btn btn-outline-success">EDIT</a>
                                     <a href="" class="btn btn-outline-danger">HAPUS</a>
                                 </td>
 

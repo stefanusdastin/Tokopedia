@@ -85,11 +85,11 @@ if (!isset($_SESSION['username'])) {
             <div class="card shadow-lg">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col-10">
                             <h3>List User</h3>
                         </div>
                         <div class="col">
-                            <a href="t" class="btn btn-outline-danger">HAPUS</a>
+                            <a href="tambah-user.php" class="btn btn-outline-success">Add User</a>
                         </div>
                     </div>
                 </div>

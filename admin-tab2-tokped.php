@@ -84,7 +84,14 @@ if (!isset($_SESSION['username'])) {
         <div class="col-10 mt-5">
             <div class="card shadow-lg">
                 <div class="card-body">
-                    <h3>List User</h3>
+                    <div class="row">
+                        <div class="col-11">
+                            <h3>List User</h3>
+                        </div>
+                        <div class="col">
+                            <a href="t" class="btn btn-outline-danger">HAPUS</a>
+                        </div>
+                    </div>
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -115,16 +122,15 @@ if (!isset($_SESSION['username'])) {
                                     <?php echo $d['username']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $d['password']; ?>
+                                    <?php echo md5($d['password']); ?>
                                 </td>
                                 <td>
                                     <?php echo $d['level']; ?>
                                 </td>
                                 <td>
-                                    <a href="edit-user.php?email=<?= $d['email']?>" class="btn btn-outline-success">EDIT</a>
-                                    <a href="" class="btn btn-outline-danger">HAPUS</a>
+                                    <a href="edit-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-success">EDIT</a>
+                                    <a href="hapus-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-danger">HAPUS</a>
                                 </td>
-
                             </tr>
                         <?php
                         }

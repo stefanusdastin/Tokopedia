@@ -9,14 +9,14 @@ session_start();
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $user = $_POST['user'];
-    $password = $_POST['password'];
+    $password = $_POST['password'];  
     $cpassword = $_POST['cpassword'];
-
+    $level = $_POST['level'];
     if ($password == $cpassword) {
         $sql = "SELECT * FROM user WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sqli = "INSERT INTO user (email,username,password) VALUES ('$email','$user','$password')";
+            $sqli = "INSERT INTO user (`email`,`username`,`password`,`level`) VALUES ('$email','$user','$password','$level')";
             $res = mysqli_query($conn, $sqli);
             if ($res) {
                 $_SESSION['username'] = $email;
@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<script>alert('Password Tidak Sesuai')</script>";
     }
+    
 }
 
 ?>
@@ -88,7 +89,7 @@ if (isset($_POST['submit'])) {
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="user" class="form-label">Username</label>
-                            <input name="user " type="text" class="form-control" value="<?php echo $user; ?>" required>
+                            <input name="user" type="text" class="form-control" value="<?php echo $user ?>" required>
                         </div>
                     </div>
                 </div>
@@ -115,6 +116,7 @@ if (isset($_POST['submit'])) {
                         <input class="btn btn-outline-success" type="submit" name="submit" value="Sign In">
                     </div>
                 </div>
+                <input type="hidden" name="level" value="pengguna">
             </form>
         </div>
     </section>

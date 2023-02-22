@@ -12,9 +12,7 @@ if (!$result) {
 
 while ($customer_data = mysqli_fetch_array($result)) {
     $user = $customer_data['username'];
-    $d = $customer_data['email'];
-    $pass = $customer_data['password'];
-    $level = $customer_data['level'];
+    $email = $customer_data['email'];
 }
 ?>
 
@@ -58,7 +56,7 @@ while ($customer_data = mysqli_fetch_array($result)) {
 
         <div class="row text-center mb-3">
             <div class="col mt-5">
-                <h2>Edit Data User</h2>
+                <h2>Edit Section</h2>
             </div>
         </div>
         <div id="con-form" class="container">
@@ -67,7 +65,9 @@ while ($customer_data = mysqli_fetch_array($result)) {
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
-                            <input id="email" name="email" type="email" class="form-control" value="<?= $d ?>" required>
+                            <input id="email" name="email" type="email" class="form-control" value="<?= $email; ?>" readonly="true" aria-describedby="emailHelp" required>
+                            <div id="emailHelp" class="form-text">Only this user can change the email.</div>
+
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ while ($customer_data = mysqli_fetch_array($result)) {
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="user" class="form-label">Username</label>
-                            <input id="user" name="user " type="text" class="form-control" value="<?= $user; ?>" required>
+                            <input id="user" name="user" type="text" class="form-control" value="<?= $user; ?>" required>
                         </div>
                     </div>
                 </div>
@@ -83,9 +83,9 @@ while ($customer_data = mysqli_fetch_array($result)) {
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="level" class="form-label">Level</label>
-                            <select class="form-control form-control-md" id="level" name="level" required >
-                                <option>Pengguna</option>
-                                <option>Admin</option>
+                            <select class="form-control form-control-md" id="level" name="level" required>
+                                <option value="1">Pengguna</option>
+                                <option value="2">Admin</option>
                             </select>
                         </div>
                     </div>

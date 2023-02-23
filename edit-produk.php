@@ -2,27 +2,18 @@
 
 include 'config.php';
 
-session_start();
+$id = $_GET['id'];
 
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $username = $_POST['user'];
-    $level = filter_input(INPUT_POST, "level", FILTER_VALIDATE_INT);
 
-    if ($level == 1) {
-        $l = "pengguna";
-    }elseif ($level == 2) {
-        $l = "admin";
-    }
+$result = mysqli_query($conn, "SELECT * FROM produk WHERE id='" . $id . "'");
+if (!$result) {
+    header("Location:edit-produk.php");
+}
 
-    $query = "INSERT INTO user VALUES('$email','$username','$password','$l');";
-    $result = mysqli_query($conn, $query);
-    if ($query) {
-        echo '<script>alert("Berhasil"); window.location="admin-tab2-tokped.php"; </script>';
-    } else {
-        echo '<script>alert("Gagal"); window.location="admin-tab2-tokped.php"; </script>';
-    }
+while ($customer_data = mysqli_fetch_array($result)) {
+    $nama = $customer_data['nama'];
+    $harga = $customer_data['harga'];
+    $stok = $customer_data['stok'];
 }
 ?>
 
@@ -70,13 +61,13 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div id="con-form" class="container">
-            <form action="" method="POST">
+            <form action="admin_edituser_process.php" method="POST">
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input id="email" name="email" type="email" class="form-control" aria-describedby="emailHelp" required>
-                            <div id="emailHelp" class="form-text">Only this user can change the email.</div>
+                            <label for="id" class="form-label">ID</label>
+                            <input id="id" name="id" type="id" class="form-control" value="<?= $id; ?>" readonly="true" aria-describedby="emailHelp" required>
+                            <div id="emailHelp" class="form-text">ID cannot edited because it was auto-generated</div>
 
                         </div>
                     </div>
@@ -84,16 +75,8 @@ if (isset($_POST['submit'])) {
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="user" class="form-label">Username</label>
-                            <input id="user" name="user" type="text" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center mb-2">
-                    <div class="col-md-8">
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input id="password" name="password" type="password" class="form-control" required>
+                            <label for="user" class="form-label">Product Name</label>
+                            <input id="user" name="user" type="text" class="form-control" value="<?= $user; ?>" required>
                         </div>
                     </div>
                 </div>
@@ -102,7 +85,7 @@ if (isset($_POST['submit'])) {
                         <div class="mb-3">
                             <label for="level" class="form-label">Level</label>
                             <select class="form-control form-control-md" id="level" name="level" required>
-                                <option value="1" selected>Pengguna</option>
+                                <option value="1">Pengguna</option>
                                 <option value="2">Admin</option>
                             </select>
                         </div>
@@ -110,7 +93,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-8 mb-3">
-                        <input class="btn btn-outline-success" type="submit" name="submit" value="Finish">
+                        <input class="btn btn-outline-success" type="submit" name="submit" value="Save Change">
                     </div>
                 </div>
             </form>

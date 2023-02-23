@@ -46,10 +46,10 @@ if (!isset($_SESSION['username'])) {
                         <a class="nav-link" href="http://localhost/tokopedia/admin-tokped.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost/Tokopedia/admin-tab2-tokped.php">User</a>
+                        <a class="nav-link" href="http://localhost/Tokopedia/admin-tab2-tokped.php">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/Tokopedia/admin-tab3-tokped.php">Product</a>
+                        <a class="nav-link active" href="http://localhost/Tokopedia/admin-tab3-tokped.php">Product</a>
                     </li>
                 </ul>
                 <!-- Section Account -->
@@ -86,7 +86,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="card-body">
                     <div class="row">
                         <div class="col-10">
-                            <h3>List User</h3>
+                            <h3>Manage Product</h3>
                         </div>
                         <div class="col">
                             <a href="tambah-user.php" class="btn btn-outline-success">Add User</a>
@@ -96,40 +96,35 @@ if (!isset($_SESSION['username'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Level</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nama Barang</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Stok</th>
                             <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include 'config.php';
-                        $no = 1;
-                        $data = mysqli_query($conn, "select * from user");
+                        $data = mysqli_query($conn, "select * from produk");
                         while ($d = mysqli_fetch_array($data)) {
                         ?>
                             <tr>
                                 <td>
-                                    <?php echo $no++; ?>
+                                    <?php echo $d['id']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $d['email']; ?>
+                                    <?php echo $d['nama']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $d['username']; ?>
+                                    <?php echo ($d['harga']); ?>
                                 </td>
                                 <td>
-                                    <?php echo md5($d['password']); ?>
+                                    <?php echo $d['stok']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $d['level']; ?>
-                                </td>
-                                <td>
-                                    <a href="edit-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-success">EDIT</a>
-                                    <a href="hapus-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-danger">DELETE</a>
+                                    <a href="edit-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-success">EDIT</a>
+                                    <a href="hapus-user.php?id=<?= $d['id'] ?>" class="btn btn-outline-danger">DELETE</a>
                                 </td>
                             </tr>
                         <?php

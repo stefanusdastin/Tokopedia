@@ -49,7 +49,7 @@ if (!isset($_SESSION['username'])) {
                         <a class="nav-link" href="http://localhost/Tokopedia/admin-tab2-tokped.php">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Product</a>
+                        <a class="nav-link" href="http://localhost/Tokopedia/admin-tab3-tokped.php">Product</a>
                     </li>
                 </ul>
                 <!-- Section Account -->

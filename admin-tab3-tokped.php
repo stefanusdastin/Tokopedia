@@ -89,7 +89,7 @@ if (!isset($_SESSION['username'])) {
                             <h3>Manage Product</h3>
                         </div>
                         <div class="col">
-                            <a href="tambah-user.php" class="btn btn-outline-success">Add User</a>
+                            <a href="tambah-produk.php" class="btn btn-outline-success">Add Product</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@ if (!isset($_SESSION['username'])) {
                                 </td>
                                 <td>
                                     <a href="edit-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-success">EDIT</a>
-                                    <a href="hapus-user.php?id=<?= $d['id'] ?>" class="btn btn-outline-danger">DELETE</a>
+                                    <a href="hapus-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-danger">DELETE</a>
                                 </td>
                             </tr>
                         <?php

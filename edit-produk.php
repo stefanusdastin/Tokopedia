@@ -41,7 +41,7 @@ while ($customer_data = mysqli_fetch_array($result)) {
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-2">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost/Tokopedia/admin-tab2-tokped.php">
+            <a class="navbar-brand" href="http://localhost/Tokopedia/admin-tokped.php">
                 <img src="img/logo.svg" alt="" /> ADMIN
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@ while ($customer_data = mysqli_fetch_array($result)) {
             </div>
         </div>
         <div id="con-form" class="container">
-            <form action="admin_edituser_process.php" method="POST">
+            <form action="admin-editproduk-process.php" method="POST">
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
@@ -75,22 +75,28 @@ while ($customer_data = mysqli_fetch_array($result)) {
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="user" class="form-label">Product Name</label>
-                            <input id="user" name="user" type="text" class="form-control" value="<?= $user; ?>" required>
+                            <label for="nama" class="form-label">Product Name</label>
+                            <input id="nama" name="nama" type="text" class="form-control" value="<?= $nama; ?>" required>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="level" class="form-label">Level</label>
-                            <select class="form-control form-control-md" id="level" name="level" required>
-                                <option value="1">Pengguna</option>
-                                <option value="2">Admin</option>
-                            </select>
+                            <label for="harga" class="form-label">Harga</label>
+                            <input id="harga" name="harga" type="text" class="form-control" value="<?= $harga; ?>" required>
                         </div>
                     </div>
                 </div>
+                <div class="row justify-content-center mb-2">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="stok" class="form-label">Stok</label>
+                            <input id="stok" name="stok" type="text" class="form-control" value="<?= $stok; ?>" required>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row justify-content-center">
                     <div class="col-md-8 mb-3">
                         <input class="btn btn-outline-success" type="submit" name="submit" value="Save Change">

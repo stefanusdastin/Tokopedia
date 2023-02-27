@@ -4,6 +4,8 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header('Location:login-page-tokped.php');
 }
+
+$var = $_GET['user'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +25,7 @@ if (!isset($_SESSION['username'])) {
         <div class="row justify-content-center">
             <div class="col-md-4 me-md-5 text-light text-center">
                 <h5>
-                    <b>Welcome,</b>
+                    <b>Welcome,<?php echo $_SESSION['username']; ?></b>
                     </h4>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti a nemo ut minus magni assumenda? Voluptate beatae perspiciatis corporis doloribus, nobis id maiores? Deserunt incidunt provident aliquam nihil

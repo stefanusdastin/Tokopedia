@@ -86,7 +86,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="card-body">
                     <div class="row">
                         <div class="col-10">
-                            <h3>List User</h3>
+                            <h3>Manage User</h3>
                         </div>
                         <div class="col">
                             <a href="tambah-user.php" class="btn btn-outline-success">Add User</a>

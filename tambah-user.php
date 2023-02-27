@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-2">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost/Tokopedia/admin-tab2-tokped.php">
+            <a class="navbar-brand" href="http://localhost/Tokopedia/admin-tokped.php">
                 <img src="img/logo.svg" alt="" /> ADMIN
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
 
         <div class="row text-center mb-3">
             <div class="col mt-5">
-                <h2>Edit Section</h2>
+                <h2>Add User</h2>
             </div>
         </div>
         <div id="con-form" class="container">

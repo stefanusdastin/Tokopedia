@@ -81,14 +81,105 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Dashboard -->
     <div class="row justify-content-center">
-        <!-- List User -->
-        <div class="col-5 mt-5">
+        <div class="col-10 mt-5">
             <div class="card shadow-lg">
                 <div class="card-body">
                     <h3>List User</h3>
                 </div>
                 <table class="table table-striped">
-                    <thead> 
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include 'config.php';
+                        $no = 1;
+                        $data = mysqli_query($conn, "select * from user");
+                        while ($d = mysqli_fetch_array($data)) {
+                        ?>
+                            <tr>
+                                <td>
+                                    <?php echo $no++; ?>
+                                </td>
+                                <td>
+                                    <?php echo $d['email']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $d['username']; ?>
+                                </td>
+                                <td>
+                                    <?php echo md5($d['password']); ?>
+                                </td>
+                                <td>
+                                    <?php echo $d['level']; ?>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <!-- List Product -->
+        <div class="col-5 mt-5">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h3>List Produk</h3>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nama Barang</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include 'config.php';
+                        $data = mysqli_query($conn, "select * from produk");
+                        while ($d = mysqli_fetch_array($data)) {
+                        ?>
+                            <tr>
+                                <td>
+                                    <?php echo $d['id']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $d['nama']; ?>
+                                </td>
+                                <td>
+                                    <?php echo ($d['harga']); ?>
+                                </td>
+                                <td>
+                                    <?php echo $d['stok']; ?>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Akhir List Product -->
+        <!-- List User -->
+        <div class="col-5 mt-5">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h3>List Pesanan</h3>
+                </div>
+                <table class="table table-striped">
+                    <thead>
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Email</th>
@@ -129,108 +220,8 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
         <!-- Akhir List User -->
-        <!-- List Product -->
-        <div class="col-5 mt-5">
-            <div class="card shadow-lg">
-                <div class="card-body">
-                    <h3>List Produk</h3>
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Level</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include 'config.php';
-                        $no = 1;
-                        $data = mysqli_query($conn, "select * from user");
-                        while ($d = mysqli_fetch_array($data)) {
-                        ?>
-                            <tr>
-                                <td>
-                                    <?php echo $no++; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['email']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['username']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['password']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['level']; ?>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- Akhir List Product -->
+
     </div>
-
-    <!-- List Pesanan -->
-
-    <div class="row justify-content-center">
-        <div class="col-10 mt-5">
-            <div class="card shadow-lg">
-                <div class="card-body">
-                    <h3>Pesanan</h3>
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Level</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include 'config.php';
-                        $no = 1;
-                        $data = mysqli_query($conn, "select * from user");
-                        while ($d = mysqli_fetch_array($data)) {
-                        ?>
-                            <tr>
-                                <td>
-                                    <?php echo $no++; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['email']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['username']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['password']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $d['level']; ?>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- Akhir Dashboard -->
-
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>

@@ -191,160 +191,32 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/preview-produk-user.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk1.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="GHANYA Bantal UNICORN Cushion - UNICORN RANDOM" />
-                        <div class="card-body">
-                            <div class="card-text" style="color: black; text-decoration: none">
-                                <p>GHANYA Bantal UNICORN Cushion - UNICORN...</p>
-                                <b>
-                                    <p>Rp90.000</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">22% <s class="text-dark">Rp115.000</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Jakarta Utara</b></p>
+        <?php
+        include 'config.php';
+        $data = mysqli_query($conn, "select * from produk");
+        while ($d = mysqli_fetch_array($data)) {
+        ?>
+            <div class="row">
+                <div class="col-sm-3 mb-3">
+                    <a href="http://localhost/Tokopedia/preview-produk-user.php">
+                        <div class="card" style="border-radius: 20px">
+                            <img src="img/produk1.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="GHANYA Bantal UNICORN Cushion - UNICORN RANDOM" />
+                            <div class="card-body">
+                                <div class="card-text" style="color: black; text-decoration: none">
+                                    <p><?php echo $d['nama']; ?></p>
+                                    <b>
+                                        <p><?php echo ($d['harga']); ?></p>
+                                    </b>
+                                    <p class="card-text"><i class="bi bi-geo-alt"></i><b> Jakarta Utara</b></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk2.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="MINISO Krim Tangan Bunga 30mL Fruity Hand Cream Mawar Raspberry Rose - Raspberry" />
-                        <div class="card-body">
-                            <div class="card-text" style="color: black; text-decoration: none">
-                                <p>MINISO Krim Tangan Bunga 30mL Fruity Hand Cream...</p>
-                                <b>
-                                    <p>Rp18.900</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">37% <s class="text-dark">Rp29.900</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Jakarta Utara</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk3.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="Oral-B Sikat Gigi Toothbrush Complete Easy Clean Charcoal 3s" />
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>Oral-B Sikat Gigi Toothbrush Complete Easy Clean...</p>
-                                <b>
-                                    <p>Rp16.324</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">23% <s class="text-dark">Rp21.200</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Solo</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk4.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="Loyang Kue Silikon CaTalina TAHAN PANAS Pink - BAK-39C" />
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>Loyang Kue Silikon CaTalina TAHAN PANAS Pink...</p>
-                                <b>
-                                    <p>Rp29.561</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">84% <s class="text-dark">Rp187.560</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Surabaya</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk5.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="Mouse Wireless Logitech M221 - Silent Click" />
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>Mouse Wireless Logitech M221 - Silent Click...</p>
-                                <b>
-                                    <p>Rp171.600</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">12% <s class="text-dark">Rp195.000</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Tangerang</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk6.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="Vaseline Super Food Cranberry 200ml Body Lotion Skin Serum 200 ml" />
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>Vaseline Super Food Cranberry 200ml Body...</p>
-                                <b>
-                                    <p>Rp28.300</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">5% <s class="text-dark">Rp29.800</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Bandung</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk7.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="Kacamata Hitam Sunglasses Round Modern Style Anti UV-400 97074 - Black Leopard, Lensa Normal" />
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>Kacamata Hitam Sunglasses Round Modern...</p>
-                                <b>
-                                    <p>Rp35.000</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">73% <s class="text-dark">Rp129.900</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Tegal</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 mb-3">
-                <a href="http://localhost/Tokopedia/landing-tokped.php">
-                    <div class="card" style="border-radius: 20px">
-                        <img src="img/produk8.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="Anlene Gold 5X Susu Bubuk Vanila 640g-Tulang, Sendi & Otot" />
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>Anlene Gold 5X Susu Bubuk Vanila 640g...</p>
-                                <b>
-                                    <p>Rp82.000</p>
-                                </b>
-                                <b>
-                                    <p class="text-danger">20% <s class="text-dark">Rp103.104</s></p>
-                                </b>
-                                <p class="card-text"><i class="bi bi-geo-alt"></i><b> Surabaya</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+                    </a>
+                </div>
+            </div>  
+            <?php
+        }
+            ?>
     </div>
     <!-- Akhir Tabel Produk -->
 

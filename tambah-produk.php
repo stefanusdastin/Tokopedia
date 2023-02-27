@@ -2,17 +2,20 @@
 
 include 'config.php';
 
-$d = $_GET['email'];
+session_start();
 
+if (isset($_POST['submit'])) {
+    $nama = $_POST['nama'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
 
-$result = mysqli_query($conn, "SELECT * FROM user WHERE email='" . $d . "'");
-if (!$result) {
-    header("Location:edit-user.php");
-}
-
-while ($customer_data = mysqli_fetch_array($result)) {
-    $user = $customer_data['username'];
-    $email = $customer_data['email'];
+    $query = "INSERT INTO produk (`nama`,`harga`,`stok`) VALUES('$nama','$harga','$stok');";
+    $result = mysqli_query($conn, $query);
+    if ($query) {
+        echo '<script>alert("Berhasil"); window.location="admin-tab3-tokped.php"; </script>';
+    } else {
+        echo '<script>alert("Gagal"); window.location="admin-tab3-tokped.php"; </script>';
+    }
 }
 ?>
 
@@ -56,43 +59,38 @@ while ($customer_data = mysqli_fetch_array($result)) {
 
         <div class="row text-center mb-3">
             <div class="col mt-5">
-                <h2>Edit Section</h2>
+                <h2>Add User</h2>
             </div>
         </div>
         <div id="con-form" class="container">
-            <form action="admin-edituser-process.php" method="POST">
+            <form action="" method="POST">
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input id="email" name="email" type="email" class="form-control" value="<?= $email; ?>" readonly="true" aria-describedby="emailHelp" required>
-                            <div id="emailHelp" class="form-text">Only this user can change the email.</div>
-
+                            <label for="nama" class="form-label">Product Name</label>
+                            <input id="nama" name="nama" type="text" class="form-control" required>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="user" class="form-label">Username</label>
-                            <input id="user" name="user" type="text" class="form-control" value="<?= $user; ?>" required>
+                            <label for="harga" class="form-label">Harga</label>
+                            <input id="harga" name="harga" type="" class="form-control" required>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="level" class="form-label">Level</label>
-                            <select class="form-control form-control-md" id="level" name="level" required>
-                                <option value="1">Pengguna</option>
-                                <option value="2">Admin</option>
-                            </select>
+                            <label for="stok" class="form-label">Stok</label>
+                            <input id="stok" name="stok" type="text" class="form-control" required>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-8 mb-3">
-                        <input class="btn btn-outline-success" type="submit" name="submit" value="Save Change">
+                        <input class="btn btn-outline-success" type="submit" name="submit" value="Finish">
                     </div>
                 </div>
             </form>

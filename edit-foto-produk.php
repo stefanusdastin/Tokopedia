@@ -1,30 +1,29 @@
 <?php
 
-include 'config.php';
+include "config.php";
 
-session_start();
+$id = $_GET['id'];
 
-    if (count($_FILES) > 0) {
-        if (is_uploaded_file($_FILES['gambar']['tmp_name'])) {
-            $gambar = addslashes(file_get_contents($_FILES['gambar']['tmp_name']));
-            $harga = $_POST['harga'];
-            $nama = $_POST['nama'];
-            $asal = $_POST['asal'];
-            $stok = $_POST['stok'];
-        
-            $query = "INSERT INTO produk (`nama`,`harga`,`asal`,`gambar`,`stok`) VALUES('$nama','$harga','$asal','$gambar','$stok');";
-            $result = mysqli_query($conn, $query);
-            if ($query) {
-                echo '<script>alert("Berhasil"); window.location="admin-tab3-tokped.php"; </script>';
-            } else {
-                echo '<script>alert("Gagal"); window.location="admin-tab3-tokped.php"; </script>';
-            }
+if (count($_FILES) > 0) {
+    if (is_uploaded_file($_FILES['gambar']['tmp_name'])) {
+        $gambar = addslashes(file_get_contents($_FILES['gambar']['tmp_name']));
+        $propertiesgambar = getimageSize($_FILES['gambar']['tmp_name']);
+
+        $query = "UPDATE produk SET gambar='$gambar' WHERE id='" . $id . "';";
+        $res = mysqli_query($conn, $query);
+        if (!$res) {
+            echo '<script>alert("Gagal"); window.location="admin-tab3-tokped.php"; </script>';
+        } else {
+            echo '<script>alert("Berhasil"); window.location="admin-tab3-tokped.php"; </script>';
         }
     }
-?>
+}
 
+
+
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <!-- Required meta tags -->
@@ -63,7 +62,7 @@ session_start();
 
         <div class="row text-center mb-3">
             <div class="col mt-5">
-                <h2>Add User</h2>
+                <h2>Change Product Image</h2>
             </div>
         </div>
         <div id="con-form" class="container">
@@ -71,47 +70,14 @@ session_start();
                 <div class="row justify-content-center mb-2">
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Product Name</label>
-                            <input id="nama" name="nama" type="text" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center mb-2">
-                    <div class="col-md-8">
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload Product Image</label>
+                            <label for="formFile" class="form-label">Upload New Image</label>
                             <input class="form-control" type="file" id="gambar" name="gambar">
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center mb-2">
-                    <div class="col-md-8">
-                        <div class="mb-3">
-                            <label for="harga" class="form-label">Harga</label>
-                            <input id="harga" name="harga" type="" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center mb-2">
-                    <div class="col-md-8">
-                        <div class="mb-3">
-                            <label for="harga" class="form-label">Asal</label>
-                            <input id="asal" name="asal" type="text" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center mb-2">
-                    <div class="col-md-8">
-                        <div class="mb-3">
-                            <label for="stok" class="form-label">Stok</label>
-                            <input id="stok" name="stok" type="text" class="form-control" required>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-8 mb-3">
-                        <input class="btn btn-outline-success" type="submit" name="submit" value="Finish">
+                        <input class="btn btn-outline-success" type="submit" name="submit" value="Save Change">
                     </div>
                 </div>
             </form>
@@ -119,11 +85,11 @@ session_start();
     </section>
     <!-- Akhir Form -->
 
+    </div>
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-
 
 </html>

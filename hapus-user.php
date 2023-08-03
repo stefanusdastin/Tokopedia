@@ -11,3 +11,4 @@ if ($result) {
 } else {
     echo'<script>alert("Woops! Terjadi kesalahan."); window.location="admin-tab2-tokped.php"; </script>';
 }
+?>

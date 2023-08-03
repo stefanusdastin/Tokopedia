@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-//cek apakah ada email
-if (!isset($_SESSION['username'])) {
-    header('Location:login-page-tokped.php');
-}
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +18,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Countdown script -->
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("23 September, 2022 9:53:00").getTime();
+        var countDownDate = new Date("17 October, 2022 18:23:00").getTime();
 
         // Update the count down every 1 second
         var x = setInterval(function() {
@@ -56,23 +45,24 @@ if (!isset($_SESSION['username'])) {
         }, 1000);
     </script>
 
-    <title>Tokopedia</title>
+    <title>Situs Jual Beli Online Terlengkap, Mudah &amp; Aman | Tokopedia</title>
 </head>
 
 <body>
+
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-2">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost/tokopedia/user-tokped.php">
-                <img src="img/logo.svg" alt="" />
+            <a class="navbar-brand" href="http://localhost/Tokopedia/landing-tokped.php">
+                <img src="img/logo.svg" alt="Tokopedia" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-2 mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/tokopedia/user-tokped.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="http://localhost/Tokopedia/landing-tokped.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">For You</a>
@@ -81,8 +71,7 @@ if (!isset($_SESSION['username'])) {
                         <a class="nav-link" href="#">Explore</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Category
-                        </a>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Category </a>
                         <ul class="dropdown-menu" style="border-radius: 20px">
                             <li><a class="dropdown-item" href="#">Handphone & Tablet</a></li>
                             <li><a class="dropdown-item" href="#">Top-up & Tagihan</a></li>
@@ -92,38 +81,72 @@ if (!isset($_SESSION['username'])) {
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex w-50 me-auto" role="search">
+                    <div class="input-group">
+                        <button class="btn btn-outline-" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
+                        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
                 </form>
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item me-2 mt-2">
-                        <a class="nav-link" href="#">
-                            <h4 class="bi bi-bag-heart"></h4>
+                        <a class="nav-link" href="http://localhost/tokopedia/cart-user.php">
+                            <h4 class="bi-bag-heart"></h4>
                         </a>
                     </li>
-                    <li class="nav-item dropdown mt-2">
-                        <div class="dropdown">
-                            <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="http://localhost/pemrograman-web/pertemuan1/Ecommerce/img/profilepict.png" alt="Stefanus Dastin" width="30" class="rounded-circle" />
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" style="border-radius: 20px">
-                                <li class="ms-2 text-center">
-                                    <p class="dropdown-item-text fw-bold"><img src="http://localhost/pemrograman-web/pertemuan1/Ecommerce/img/profilepict.png" alt="Stefanus Dastin" width="75" class="rounded-circle" /><?php echo $_SESSION['username']; ?></p>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Your Account</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Helps</a></li>
-                                <li><a class="dropdown-item" href="logout-process-tokped.php">Logout</a></li>
-                            </ul>
-                        </div>
+                    <li class="nav-item me-2 mt-1">
+                        <a class="nav-link" href="signin-page-tokped.php">
+                            <button type="button" class="btn btn-outline-success">Sign In</button>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="nav-scroller bg-body shadow-sm">
+        <nav class="nav" aria-label="Secondary navigation">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://localhost/Tokopedia/landing-tokped.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">For You</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Explore</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Category </a>
+                        <ul class="dropdown-menu" style="border-radius: 20px">
+                            <li><a class="dropdown-item" href="#">Handphone & Tablet</a></li>
+                            <li><a class="dropdown-item" href="#">Top-up & Tagihan</a></li>
+                            <li><a class="dropdown-item" href="#">Transportasi Umum</a></li>
+                            <li><a class="dropdown-item" href="#">Hiburan & Event</a></li>
+                            <li><a class="dropdown-item" href="#">Komputer & Laptop</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex w-50 me-auto" role="search">
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
+                        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+                </form>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item me-2 mt-2">
+                        <a class="nav-link" href="http://localhost/tokopedia/cart-user.php">
+                            <h4 class="bi-bag-heart"></h4>
+                        </a>
+                    </li>
+                    <li class="nav-item me-2 mt-1">
+                        <a class="nav-link" href="signin-page-tokped.php">
+                            <button type="button" class="btn btn-outline-success">Sign In</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <!-- Akhir Navbar -->
 
     <!-- Jumbotron -->
@@ -191,32 +214,34 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
         </div>
-        <?php
-        include 'config.php';
-        $data = mysqli_query($conn, "select * from produk");
-        while ($d = mysqli_fetch_array($data)) {
-        ?>
-            <div class="row">
-                <div class="col-sm-3 mb-3">
-                    <a href="http://localhost/Tokopedia/preview-produk-user.php">
-                        <div class="card" style="border-radius: 20px">
-                            <img src="img/produk1.webp" class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="GHANYA Bantal UNICORN Cushion - UNICORN RANDOM" />
-                            <div class="card-body">
-                                <div class="card-text" style="color: black; text-decoration: none">
-                                    <p><?php echo $d['nama']; ?></p>
-                                    <b>
-                                        <p><?php echo ($d['harga']); ?></p>
-                                    </b>
-                                    <p class="card-text"><i class="bi bi-geo-alt"></i><b> Jakarta Utara</b></p>
+        <div class="row">
+            <?php
+            include 'config.php';
+            for ($i = 0; $i < 9; $i++) {
+                $data = mysqli_query($conn, "select * from produk where id='$i';");
+                while ($d = mysqli_fetch_array($data)) {
+                    $image = base64_encode($d['gambar']); ?>
+                    <div class="col-sm-3 mb-3">
+                        <a href="http://localhost/Tokopedia/preview-produk-user.php?id=<?= $i; ?>">
+                            <div class="card" style="border-radius: 20px">
+                                <img class="card-img-top" style="border-radius: 20px;" width="auto" height="auto" alt="<?php echo ($d['nama']); ?>" src='data:image/webp;base64,<?php echo ($image); ?>'>
+                                <div class="card-body">
+                                    <div class="card-text" style="color: black; text-decoration: none">
+                                        <p><?php echo $d['nama']; ?></p>
+                                        <b>
+                                            <p> Rp<?php echo ($d['harga']); ?></p>
+                                        </b>
+                                        <p class="card-text"><i class="bi bi-geo-alt"></i><b> <?php echo ($d['asal']); ?></b></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            </div>  
+                        </a>
+                    </div>
             <?php
-        }
+                }
+            }
             ?>
+        </div>
     </div>
     <!-- Akhir Tabel Produk -->
 
@@ -224,7 +249,7 @@ if (!isset($_SESSION['username'])) {
     <div class="container">
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
             <div class="col mb-3">
-                <a class="navbar-brand" href="http://localhost/tokopedia/user-tokped.php">
+                <a class="navbar-brand" href="http://localhost/Tokopedia/landing-tokped.php">
                     <img src="img/logo.svg" alt="" />
                 </a>
                 <p class="text-muted">© 2022</p>
@@ -237,7 +262,7 @@ if (!isset($_SESSION['username'])) {
             <div class="col mb-3">
                 <h5>Menu</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="http://localhost/tokopedia/user-tokped.php" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="http://localhost/Tokopedia/landing-tokped.php" class="nav-link p-0 text-muted">Home</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">For You</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Explore</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Category</a></li>
@@ -257,11 +282,13 @@ if (!isset($_SESSION['username'])) {
     </div>
     <!-- Akhir Footer -->
 
-
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
 </body>
 
 </html>

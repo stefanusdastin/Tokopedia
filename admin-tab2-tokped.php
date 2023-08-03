@@ -128,8 +128,8 @@ if (!isset($_SESSION['username'])) {
                                     <?php echo $d['level']; ?>
                                 </td>
                                 <td>
-                                    <a href="edit-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-success">EDIT</a>
-                                    <a href="hapus-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-danger">DELETE</a>
+                                    <a href="edit-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-success btn-sm">EDIT</a>
+                                    <a href="hapus-user.php?email=<?= $d['email'] ?>" class="btn btn-outline-danger btn-sm">DELETE</a>
                                 </td>
                             </tr>
                         <?php

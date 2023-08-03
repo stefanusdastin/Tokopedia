@@ -6,8 +6,6 @@ if (!isset($_SESSION['username'])) {
     header('Location:login-page-tokped.php');
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,69 +128,127 @@ if (!isset($_SESSION['username'])) {
     </nav>
     <!-- Akhir Navbar -->
 
-    <!-- Jumbotron -->
-    <div id="jumbotron" class="container mt-md-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4 mt-md-4 me-md-5 text-center">
-                <h5>Welcome, we have your goods here!</h5>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti a nemo ut minus magni assumenda? Voluptate
-                    beatae perspiciatis corporis doloribus, nobis id maiores? Deserunt incidunt provident aliquam nihil inventore
-                    fuga
-                    magnam, voluptatum in libero culpa vitae aut doloremque dolore labore?
-                </p>
-            </div>
-            <div class="col-sm-4 m-4">
-                <img src="img/jumbotron.png" class="justify-content-center img-fluid" style="width: 500px" alt="" />
-            </div>
-        </div>
-    </div>
-    <!-- Akhir Jumbotron -->
-
-    <!-- Selected Category -->
-    <div class="container mt-3">
-        <div class="row justify-content-center">
-            <div class="col-sm m-3">
-                <div class="card" style="border-radius: 20px">
-                    <h2 class="p-2 ms-2 mt-2 fs-4">Selected Category</h2>
+    <!-- Keranjang -->
+    <div class="container">
+        <div class="row g-5 mt-5">
+            <div class="col-md-8">
+                <div class="container">
                     <div class="row">
-                        <div class="col-sm-2 ms-2 mb-3">
-                            <a role="button" class="btn btn-light" style="font-size: 12px; border-radius: 20px" href="#"><img src="img/logo-category/category1.png" style="height: 20px; width: 20px" alt="" /> Handphone &
-                                Tablet</a>
-                        </div>
-                        <div class="col-sm-2 ms-2 mb-3">
-                            <a role="button" class="btn btn-light" style="font-size: 12px; border-radius: 20px" href="#"><img src="img/logo-category/category2.png" style="height: 20px; width: 20px" alt="" /> Top-up & Tagihan</a>
-                        </div>
-                        <div class="col-sm-2 ms-2 mb-3">
-                            <a role="button" class="btn btn-light" style="font-size: 12px; border-radius: 20px" href="#"><img src="img/logo-category/category3.png" style="height: 20px; width: 20px" alt="" /> Transportasi
-                                Umum</a>
-                        </div>
-                        <div class="col-sm-2 ms-2 mb-3">
-                            <a role="button" class="btn btn-light" style="font-size: 12px; border-radius: 20px" href="#"><img src="img/logo-category/category4.png" style="height: 20px; width: 20px" alt="" /> Hiburan & Event</a>
-                        </div>
-                        <div class="col-sm-2 ms-2 mb-3">
-                            <a role="button" class="btn btn-light" style="font-size: 12px; border-radius: 20px" href="#"><img src="img/logo-category/category6.png" style="height: 20px; width: 20px" alt="" /> Komputer &
-                                Laptop</a>
+                        <div class="col mb-3">
+                            <h4 class="bi bi-bag-heart"> My Cart</h4>
+                            <hr>
                         </div>
                     </div>
+                    <?php
+                    include 'config.php';
+                    $dataA = mysqli_query($conn, "select * from pesanan where pemesan='" . $_SESSION['username'] . " ';");
+                    $a = mysqli_fetch_lengths($dataA);
+                    if ($a < 0) { ?>
+                        <div class="row justify-content-center">
+                            <div class="col-md-1 mt-5 text-black-50">
+                                <h1 class="bi bi-cart-x"></h1>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center text-black-50">
+                            <div class="col-md-7 ms-3">
+                                <h4>You dont have anything in cart</h4>
+                            </div>
+                        </div>
+                    <?php } if($a > 0) {?>
+                    <?php
+                    while ($d = mysqli_fetch_array($dataA)) {
+                        $dataC = mysqli_query($conn, "select * from produk where id='" . $d['id_barang'] . " ';");
+                        while ($b = mysqli_fetch_array($dataC)) {
+                            $image = base64_encode($b['gambar']); ?>
+                            <div class="row">
+                                <div class="col mb-2">
+                                    <div class="card" style="border-radius: 20px">
+                                        <div class="row">
+                                            <div class="col-3 ms-3">
+                                                <a href="http://localhost/Tokopedia/preview-produk-user.php?id=<?= $d['id_barang'] ?>">
+                                                    <img src='data:image/webp;base64,<?php echo ($image); ?>' class="img-fluid rounded-start" width="auto" height="auto" alt="...">
+                                                </a>
+                                            </div>
+                                            <div class="col-7">
+                                                <div class="card-body">
+                                                    <a href="http://localhost/Tokopedia/preview-produk-user.php?id=<?= $d['id_barang'] ?>">
+                                                        <h5 class="card-title" style="color: black; text-decoration: none"><?php echo $b['nama'] ?></h5>
+                                                    </a>
+                                                    <p class="card-text">Rp <?php echo $b['harga'] ?> x <?php echo $d['jumlah'] ?> <br> <b>Subtotal = Rp <?php echo $d['subtotal'] ?></b> </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-1 mt-5">
+                                                <a href="http://localhost/Tokopedia/hapuscart-process.php?idpesanan=<?= $d['id_pesanan'] ?>">
+                                                    <h4 class="bi bi-trash3" style="color: red;"></h4>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                }
+                    ?>
                 </div>
-                <br />
-                <hr class="border-2" style="width: auto; height: 5px; border-radius: 20px" />
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="card shadow-lg" style="border-radius: 20px">
+                        <div class="row m-3">
+                            <div class="col">
+                                <h5>Checkout</h5>
+                            </div>
+                        </div>
+                        <form action="" method="POST">
+                            <div class="row ms-3 mb-3 me-3">
+                                <div class="col">
+                                    <label for="level" class="form-label">Quantity</label>
+                                    <input class=" form-control quantity" id="secondNumber" min="1" name="form-0-quantity" value="1" max="<?php echo $d['stok'] ?>" type="number" onclick="multiplyBy()">
+                                </div>
+                            </div>
+                            <div class="row m-3 ">
+                                <div class="col">
+                                    <label for="user" class="form-label">Notes</label>
+                                    <input id="user" name="user" type="text" class="form-control" placeholder="Ex: Color, Type, etc">
+                                </div>
+                            </div>
+                            <div class="row ms-3 mb-3 ">
+                                <div class="col">
+                                    <b>
+                                        <h3>Subtotal</h3>
+                                    </b>
+                                    <h4 id="result">Rp </h4>
+                                </div>
+                            </div>
+                            <div class="row m-3">
+                                <div class="d-grid gap-2">
+                                    <input class="btn btn-success" style="border-radius: 8px;" type="submit" name="buy" value="+ Add to Cart">
+                                    <input class="btn btn-outline-success" style="border-radius: 8px;" type="submit" name="buy" value="Buy!">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Akhir Selected Category -->
+    <!-- Akhir Keranjang -->
 
     <!-- Tabel Produk -->
     <div class="container">
         <div class="row">
-            <div class="col-sm-4 mt-3 ms-3 mb-3 text-start">
-                <h2 class="fs-3">Limited Time Offers!</h2>
+            <div class="col-sm-4 mt-3 ms-3 text-start">
+                <h2 class="fs-3">Other results</h2>
             </div>
-            <div class="col-sm-2 mt-3 ms-3 mb-3 fs-5 text-center text-light">
-                <div class="card bg-danger" style="border-radius: 20px">
-                    <a id="demo"></a>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr>
             </div>
         </div>
         <div class="row">
@@ -203,10 +259,9 @@ if (!isset($_SESSION['username'])) {
                 while ($d = mysqli_fetch_array($data)) {
                     $image = base64_encode($d['gambar']); ?>
                     <div class="col-sm-3 mb-3">
-                        <a href="http://localhost/Tokopedia/preview-produk-user.php?id=<?= $i;
-                                                                                        $_SESSION['username']; ?>">
+                        <a href="http://localhost/Tokopedia/preview-produk-user.php?id=<?= $i ?>">
                             <div class="card" style="border-radius: 20px">
-                                <img class="card-img-top" style="border-radius: 20px;" width="auto" height="auto" alt="<?php echo ($d['nama']); ?>" src='data:image/webp;base64,<?php echo ($image); ?>'>
+                                <img class="card-img-top" style="border-radius: 20px; width: auto; height: auto" alt="<?php echo ($d['nama']); ?>" src='data:image/webp;base64,<?php echo ($image); ?>'>
                                 <div class="card-body">
                                     <div class="card-text" style="color: black; text-decoration: none">
                                         <p><?php echo $d['nama']; ?></p>

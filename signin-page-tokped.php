@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
                         <div class="mb-3">
                             <label for="cpassword" class="form-label">Confirm Password</label>
                             <input name="cpassword" type="password" class="form-control" value="<?php echo $cpassword ?>" required>
-                            <p class="form-text">Already have an account?<a href="login-page-tokped.php">Log In</a><br><a href="#">Forgot your password?</a></p>
+                            <p class="form-text">Already have an account?<a href="login-page-tokped.php">Log In</a>
                         </div>
                     </div>
                 </div>

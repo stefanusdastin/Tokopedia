@@ -99,6 +99,8 @@ if (!isset($_SESSION['username'])) {
                             <th scope="col">ID</th>
                             <th scope="col">Nama Barang</th>
                             <th scope="col">Harga</th>
+                            <th scope="col">Asal</th>
+                            <th scope="col">Gambar</th>
                             <th scope="col">Stok</th>
                             <th scope="col">Edit</th>
                         </tr>
@@ -107,7 +109,9 @@ if (!isset($_SESSION['username'])) {
                         <?php
                         include 'config.php';
                         $data = mysqli_query($conn, "select * from produk");
-                        while ($d = mysqli_fetch_array($data)) {
+                        while ($d = mysqli_fetch_array($data))
+                        {
+                            $image = base64_encode($d['gambar']);
                         ?>
                             <tr>
                                 <td>
@@ -120,11 +124,17 @@ if (!isset($_SESSION['username'])) {
                                     <?php echo ($d['harga']); ?>
                                 </td>
                                 <td>
+                                    <?php echo $d['asal']; ?>
+                                </td>
+                                <td>
+                                    <img width="100px" height="100px" src='data:image/webp;base64,<?php echo ($image); ?>'>
+                                </td>
+                                <td>
                                     <?php echo $d['stok']; ?>
                                 </td>
                                 <td>
-                                    <a href="edit-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-success">EDIT</a>
-                                    <a href="hapus-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-danger">DELETE</a>
+                                    <a href="edit-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-success btn-sm">EDIT</a>
+                                    <a href="hapus-produk.php?id=<?= $d['id'] ?>" class="btn btn-outline-danger btn-sm">DELETE</a>
                                 </td>
                             </tr>
                         <?php

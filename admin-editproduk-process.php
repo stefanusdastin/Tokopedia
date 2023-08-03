@@ -9,9 +9,10 @@ if (isset($_POST['submit'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
     $harga = $_POST['harga'];
+    $asal = $_POST['asal'];
     $stok = $_POST['stok'];
 
-    $query = "UPDATE produk SET nama='$nama', harga='$harga', stok='$stok' WHERE id='" . $id . "';";
+    $query = "UPDATE produk SET nama='$nama', harga='$harga', asal='$asal', stok='$stok' WHERE id='" . $id . "';";
     $res = mysqli_query($conn, $query);
     if (!$res) {
         echo '<script>alert("Gagal"); window.location="admin-tab3-tokped.php"; </script>';
@@ -19,3 +20,4 @@ if (isset($_POST['submit'])) {
         echo '<script>alert("Berhasil"); window.location="admin-tab3-tokped.php"; </script>';
     }
 }
+?>
